@@ -1,2 +1,0 @@
-# Pay.bliss
-Deposit confirmation 

